@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<title>HealthMap AI BG</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+<h1>HealthMap AI BG</h1>
+
+<div id="search-container">
+  <label for="specialty">Избери специалност:</label>
+  <select id="specialty">
+    <option value="">Всички</option>
+    <option value="Кардиолог">Кардиолог</option>
+    <option value="Невролог">Невролог</option>
+    <option value="Педиатър">Педиатър</option>
+    <option value="Гастроентеролог">Гастроентеролог</option>
+    <option value="Ендокринолог">Ендокринолог</option>
+  </select>
+</div>
+
+<div id="map" style="height:400px;margin-top:10px;"></div>
+
+<div id="details"></div>
+
+<div id="ai-panel">
+  <h3>AI помощник</h3>
+  <input type="text" id="ai-input" placeholder="Опиши симптомите си">
+  <button id="ai-btn">Препоръчай специалист</button>
+  <p id="ai-output"></p>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("service-worker.js")
+  .then(()=>console.log("Service Worker registered"))
+  .catch(err=>console.log("SW registration failed:",err));
+}
+</script>
+</body>
+</html>
